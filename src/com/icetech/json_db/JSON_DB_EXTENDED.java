@@ -65,7 +65,7 @@ public class JSON_DB_EXTENDED {
 	}
 	
 	/**
-	 * Returns all entity entries from the data store.
+	 * Returns all entity entries from the data store. Each item of an entity is accompanied with the key or unique id of the items.
 	 * @author Larry Akah
 	 * @throws JSONException for errors during construction of a JSON data string.
 	 * @throws NullPointerException for any null accessed variable
@@ -90,7 +90,9 @@ public class JSON_DB_EXTENDED {
 							if(null != resultArray)
 								for(int j=0; j<resultArray.length(); j++){
 									mlist.add(resultArray.getString(j));
+									
 								}
+							mlist.add(keysJson.getString(i));
 							results.add(mlist);
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
@@ -100,6 +102,41 @@ public class JSON_DB_EXTENDED {
 					}
 				return results;
 	}
+	
+	/**
+	 * updates a single item entry of an entity
+	 * @param itemId provides the id of the item to be updated
+	 * @param newItem the new set of data to be used to update the entry 
+	 * @return boolean indicating whether the item was successfully updated or not. True means item was updated, false means otherwise.
+	 */
+	public boolean update(String itemId, ArrayList<Object> newItem){
+		boolean operationSucceeded = false;
+		
+		JSONArray jarray = new JSONArray();
+		for(Object item: newItem){
+			jarray.put(item);
+		}
+		try {
+			dataobj.put(itemId, jarray);
+			Log.d(LIBTAG, ""+dataobj.toString(2));
+			operationSucceeded = true;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			operationSucceeded = false;
+		}finally{
+			return operationSucceeded;
+		}
+	}
+	
+	/**
+	 * Updates all the items of a given entity
+	 * @return the number of items successfully updated.
+	 */
+	public int updateAll(List<ArrayList<String>> items){
+		return 0;
+	}
+	
 	/**
 	 * Gets an entry of an entity from the data store
 	 * @author Larry Akah
@@ -150,8 +187,7 @@ public class JSON_DB_EXTENDED {
 				saved = saveid(ITEM_IDS);
 				if(saved)
 					msharedpreference.edit().putString(ENTITY_KEY, dataobj.toString()).apply();
-				
-				return saved;
+					return saved;
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -181,7 +217,7 @@ public class JSON_DB_EXTENDED {
 	 * Adds an item into an entity entry
 	 * @author Larry Akah
 	 */
-	public JSON_DB_EXTENDED put(String item){
+	public JSON_DB_EXTENDED putItem(String item){
 		
 		String key = this.generateRandomId();
 		jsonStringBuilder.append("\""+key+"\":[");
