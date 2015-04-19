@@ -117,7 +117,7 @@ public class JSON_DB_EXTENDED {
 			jarray.put(item);
 		}
 		try {
-			dataobj.put(itemId, jarray);
+			dataobj.put(itemId, jarray); //replace the current entry at the given ID.
 			Log.d(LIBTAG, ""+dataobj.toString(2));
 			operationSucceeded = true;
 		} catch (JSONException e) {
