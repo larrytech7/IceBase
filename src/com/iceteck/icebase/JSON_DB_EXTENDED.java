@@ -1,6 +1,6 @@
 package com.iceteck.icebase;
 /**
- * Apache Taverna Mobile
+ * ICeBase
  * Copyright 2015 The Apache Software Foundation
 
  * This product includes software developed at
