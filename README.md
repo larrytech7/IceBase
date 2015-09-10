@@ -1,28 +1,33 @@
-# JSON_DB
-This is a NoSQL implementation of a local database for android. It uses the JSON APIs amongst other standard Android APIs. It can be used to setup a quick NoSQL database in android. It has the same advantages as any other NoSQL database. It is easy to setup and to get started. 
+# ICEBASE
+Read the project wiki <a href="https://github.com/larrytech7/IceBase/wiki/ICEBASE-version-1.0.1">HERE</a> to get full concrete information.<br />
+Basic details can be found here for a really quick start but full documentation is on the wiki and site pages.
 
-Getting started Guide 
-Installation 
+Getting started Guide Installation
+<br/>
+To use the library in your project , just import the bin/json_db.jar file into your class path. You could also add the project as an external Library in eclipse by adding it under the libraries in your project configuration.
+<br/>
+Usage just like any other database , one can store and retrieve data. To store data, say a set of devices, the following code is used. <br /><br/>
+<code>
+Context context = this ;
 
-To use the library in yoUr project , just import the bin/json_db.jar file into your class path.
-however , you could also add the project as an external Library in eclipse by adding it under the libraries in your project configuration.
+String datakey = "DEVICES"; 
 
-Usage
-just like any other database , one can store and retrieve data.
-To store data say a set of devices, the following code  is used
-    Context context = this ;
-    String datakey = "DEVICES";
-    JSON_DB myDb = new JSON_DB(context ,datakey);
-    // here you can loop through a set of data and populate an arraylist
-  String[] mdevices = {};
-    ArrayList<String> myList= new ArrayList<String>();
+JSON_DB_EXTENDED myDb = new JSON_DB_EXTENDED(context ,datakey);
+
+ArrayList myList= new ArrayList();
     for(String dev1 : mdevices){
-         myList.add(dev1); 
-    }
-    myDb.put(mdevices).save(); //this lines saves the data 
-    
-To retrieve the data, all you need is to get a reference to your database handler and call get on ther object.
-   JSON_DB mDB = new JSON_DB (context , datakey );
-   ArrayList mylist =mDB.get();
-   
-   Here , the ArrayList object contains a list of all the devices stored in it.
+      myList.add(dev1);
+      }
+      myDb.put(mdevices).save(); //this lines saves the data
+
+</code>
+
+To retrieve the data, all you need is to get a reference to your database handler and call get on the object.
+<br />
+<code>
+JSON_DB_EXTENDED mDB = new JSON_DB_EXTENDED(context , datakey );
+ArrayList mylist =mDB.get();
+</code>
+<br />
+
+Here , the mylist object contains a list of all the devices stored in it.
