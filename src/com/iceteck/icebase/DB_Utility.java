@@ -19,7 +19,7 @@ public class DB_Utility {
 	 * Returns a new JSONArray of new key values to be stored omitting the identified entry to be removed
 	 * @param keys
 	 * @param removeid
-	 * @return
+	 * @return object instance
 	 * @throws JSONException
 	 */
 	public static JSONArray removeKey(JSONArray keys, String removeid) throws JSONException{
