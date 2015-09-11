@@ -44,7 +44,7 @@ import android.util.Log;
  * This class is much more scalable and light-weight than the initial implementation
  * @see github.com/larrytech7/IceBase/
  */
-public class JSON_DB_EXTENDED extends DB_SYNC{
+public class JSON_DB_EXTENDED {
 	
 	private String ENTITY_KEY;
 	private Context context;
@@ -60,7 +60,7 @@ public class JSON_DB_EXTENDED extends DB_SYNC{
 	 * @param entityKey The main data store key for each entity space/schema
 	 */
 	public JSON_DB_EXTENDED(Context ctx, String entityKey){
-		super("","","" ,ctx.getDir(entityKey+".json", 0));		
+		//super();		
 		context = ctx;
 		ENTITY_KEY = entityKey;
 		DBJSON = new JSONObject();
@@ -313,7 +313,7 @@ public class JSON_DB_EXTENDED extends DB_SYNC{
 	 */
 	public void syncCloud(String server, String user, String pass) {
 		// TODO Not yet tested. Needs test for secure access and functionality
-		DB_SYNC dbsync = new DB_SYNC();
+		DB_SYNC dbsync = new DB_SYNC("","","" ,context.getDir(ENTITY_KEY+".json", 0));
 		dbsync.setDbData(context.getDir(ENTITY_KEY+".json", 0));
 		dbsync.setAuthentication(user, pass);
 		dbsync.setServer(server);
