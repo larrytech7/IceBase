@@ -154,8 +154,7 @@ public class JSON_DB_EXTENDED {
 							ArrayList<Object> mlist = new ArrayList<Object>();
 							if(null != resultArray)
 								for(int j=0; j<resultArray.length(); j++){
-									mlist.add(resultArray.getString(j));
-									
+									mlist.add(resultArray.getString(j));		
 								}
 							mlist.add(keysJson.getString(i)); // adds the entry key as last value of the data returned
 							results.add(mlist);
@@ -221,20 +220,18 @@ public class JSON_DB_EXTENDED {
 				Log.i(ENTITY_KEY, keysJson.toString(2));
 				
 				if(null != keysJson)
-					for(int i=0; i<keysJson.length(); i++){
-						//for each key, get the associated data
+				//	for(int i=0; i<keysJson.length(); i++){
 						try {
-							JSONArray resultArray = mainJson.getJSONArray(keysJson.getString(i));
+							JSONArray resultArray = mainJson.getJSONArray(id);
 							if(null != resultArray)
 								for(int j=0; j<resultArray.length(); j++){
 									results.add(resultArray.getString(j));
 								}
 						} catch (Exception e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
-							continue;
+						//	continue;
 						}
-					}
+					//}
 				return results;
 	}
 	
