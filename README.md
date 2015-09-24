@@ -45,7 +45,7 @@ with space availability and pixel loss or scrambled.
         //to now add it as a value or property of some entity, we do
         person.add(Base64.encodeToString(bytes, Base64.NO_WRAP));
 </code>
-<br/>
+<br/><br/>
 To retrieve the image, it is normal to re-convert the base64 encoded string back to a a byte array from which the bitmap can be extracted.
 
 <code>
