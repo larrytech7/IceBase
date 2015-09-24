@@ -37,6 +37,7 @@ Note , to save binary data say for example images, the data type is a little tri
 we would have to convert it to a compressed byte array as follows before adding/inserting it as a value to the database
 Note how your bitmap is compressed using the PNG lossless photo conversion format so we don't run into issues 
 with space availability and pixel loss or scrambled.
+<br/>
 <code>
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
         mybitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
