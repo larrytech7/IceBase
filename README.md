@@ -2,12 +2,14 @@
 Read the project wiki <a href="https://github.com/larrytech7/IceBase/wiki/ICEBASE-version-1.0.1">HERE</a> to get full concrete information.<br />
 Basic details can be found here for a really quick start but full documentation is on the wiki and site pages.
 
-Getting started Guide Installation
+#<h4>Getting started Guide Installation</h4>
 <br/>
+<p>
 To use the library in your Android project, just import the bin/json_db.jar file into your class path. You could also add the project as an external Library in eclipse by adding it under the libraries in your project configuration.
 <br/>
-Just like any other database , your application can manipulate(CRUD) data seamlessly without much effort. To store data, say a set of devices, the following code is used. <br /><br/>
--------
+Just like any other database , your application can manipulate(CRUD) data seamlessly without much effort. To store data, say a set of devices, the following code is used.
+</p>
+--------
 Context context = this ; //application or component context
 
 String datakey = "DEVICES"; //application wide key. most often declared final and static
@@ -20,14 +22,13 @@ List<Object> myList = new ArrayList<>();
       }
       myDb.put(mdevices).save(); //this lines saves the data
 //alternatively, on could do myDb.insert(myList) if no other data objects need to be added to the current schema at the moment.
-------
+--------
 
 To retrieve the data, all you need is to get a reference to your database handler and call get on the object.
-<br />
+<br/>
 -----
 ArrayList<Object> mylist = myDb.get();
 -----
-<br />
 
 Here , the mylist object contains a list of all the devices previously stored in it or is empty if nothing was found.
 
